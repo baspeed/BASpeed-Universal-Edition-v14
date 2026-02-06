@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/11/16 17:35:59.000.621,=C:\Users\nacho\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2025/11/16 17:36:30.000.022,D:\Programacion\BAuE_v14\Principal.pas=C:\Users\nacho\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2025/11/16 17:36:30.000.022,D:\Programacion\BAuE_v14\Principal.fmx=C:\Users\nacho\Documents\Embarcadero\Studio\Projects\Unit4.fmx</Transaction>
+    <Transaction>2025/11/16 17:37:05.000.491,D:\Programacion\BAuE_v14\BASpeed.dproj=C:\Users\nacho\Documents\Embarcadero\Studio\Projects\Project4.dproj</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile Android64="" Android=""/>
+	</ActiveMobileDevice>
+	<BT_BuildType>Debug</BT_BuildType>
+</BorlandProject>

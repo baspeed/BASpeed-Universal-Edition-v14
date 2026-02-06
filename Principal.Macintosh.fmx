@@ -1,0 +1,106 @@
+inherited Form4_Macintosh: TForm4_Macintosh
+  DesignerMasterStyle = 0
+  inherited ToolBar1: TToolBar
+    inherited Image1: TImage
+      MultiResBitmap.Width = 48
+      inherited Label1: TLabel
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+    end
+  end
+  inherited Panel1: TPanel
+    inherited Rectangle1: TRectangle
+      inherited GroupBox1: TGroupBox
+        inherited Label2: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+        inherited ComboEdit1: TComboEdit
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+        inherited Label3: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+        inherited Label4: TLabel
+          Position.Y = 148.000000000000000000
+          Size.Height = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+        inherited NumberBox1: TNumberBox
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          Position.Y = 106.000000000000000000
+        end
+        inherited Label5: TLabel
+          Position.Y = 218.000000000000000000
+          Size.Height = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TabOrder = 37
+        end
+        inherited NumberBox2: TNumberBox
+          TabOrder = 40
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          Position.Y = 176.000000000000000000
+        end
+        inherited Label6: TLabel
+          Position.Y = 256.000000000000000000
+          Size.Height = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TabOrder = 42
+        end
+        inherited ComboEdit2: TComboEdit
+          TabOrder = 44
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          Position.Y = 284.000000000000000000
+        end
+      end
+      inherited Button1: TButton
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        inherited Image2: TImage
+          MultiResBitmap.Height = 48
+          MultiResBitmap.Width = 48
+        end
+      end
+    end
+  end
+  inherited Panel2: TPanel
+    inherited Rectangle2: TRectangle
+      inherited JaugeCir1: TJaugeCir
+        inherited Label7: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+      end
+      inherited ComboEdit3: TComboEdit
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        Position.Y = 339.000000000000000000
+        Margins.Top = 5.000000000000000000
+      end
+      inherited Button2: TButton
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+      inherited JaugeRect1: TJaugeRect
+        Margins.Top = 5.000000000000000000
+        Position.Y = 399.000000000000000000
+      end
+      inherited Label8: TLabel
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+      inherited Label9: TLabel
+        Margins.Top = 5.000000000000000000
+        Position.Y = 311.000000000000000000
+      end
+      inherited Label10: TLabel
+        Position.Y = 371.000000000000000000
+      end
+      inherited ProgressBar1: TProgressBar
+        Margins.Top = 10.000000000000000000
+        Position.Y = 477.000000000000000000
+        Value = 60.000000000000000000
+      end
+      inherited Label11: TLabel
+        AutoSize = True
+        Position.Y = 449.000000000000000000
+        Size.Height = 18.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+    end
+  end
+end

@@ -1,0 +1,144 @@
+inherited Form4_LgXhdpiPh: TForm4_LgXhdpiPh
+  ClientHeight = 695
+  ClientWidth = 450
+  DesignerMasterStyle = 0
+  inherited ToolBar1: TToolBar
+    Size.Width = 450.000000000000000000
+    inherited Image1: TImage
+      MultiResBitmap.Width = 48
+      inherited Label1: TLabel
+        Size.Width = 283.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+    end
+  end
+  inherited Panel1: TPanel
+    Size.Width = 450.000000000000000000
+    Size.Height = 647.000000000000000000
+    inherited Rectangle1: TRectangle
+      Size.Width = 450.000000000000000000
+      Size.Height = 647.000000000000000000
+      inherited GroupBox1: TGroupBox
+        Size.Width = 430.000000000000000000
+        Size.Height = 442.000000000000000000
+        inherited Label2: TLabel
+          Size.Width = 390.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+        inherited ComboEdit1: TComboEdit
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          Size.Width = 390.000000000000000000
+        end
+        inherited Label3: TLabel
+          Size.Width = 390.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TabOrder = 37
+        end
+        inherited Label4: TLabel
+          Position.Y = 148.000000000000000000
+          Size.Width = 430.000000000000000000
+          Size.Height = 22.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+        inherited NumberBox1: TNumberBox
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          Position.Y = 106.000000000000000000
+          Size.Width = 390.000000000000000000
+        end
+        inherited Label5: TLabel
+          Position.Y = 222.000000000000000000
+          Size.Width = 430.000000000000000000
+          Size.Height = 22.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TabOrder = 36
+        end
+        inherited NumberBox2: TNumberBox
+          TabOrder = 40
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          Position.Y = 180.000000000000000000
+          Size.Width = 390.000000000000000000
+        end
+        inherited Label6: TLabel
+          Position.Y = 264.000000000000000000
+          Size.Width = 430.000000000000000000
+          Size.Height = 22.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TabOrder = 42
+        end
+        inherited ComboEdit2: TComboEdit
+          TabOrder = 44
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          Position.Y = 296.000000000000000000
+          Size.Width = 390.000000000000000000
+        end
+      end
+      inherited Button1: TButton
+        Position.Y = 577.000000000000000000
+        Size.Width = 410.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        inherited Image2: TImage
+          MultiResBitmap.Height = 48
+          MultiResBitmap.Width = 48
+        end
+      end
+    end
+  end
+  inherited Panel2: TPanel
+    Size.Width = 450.000000000000000000
+    Size.Height = 647.000000000000000000
+    inherited Rectangle2: TRectangle
+      Size.Width = 450.000000000000000000
+      Size.Height = 647.000000000000000000
+      inherited JaugeCir1: TJaugeCir
+        Size.Width = 450.000000000000000000
+        inherited Label7: TLabel
+          Size.Width = 450.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+      end
+      inherited Affichage7Seg1: TAffichage7Seg
+        Size.Width = 250.000000000000000000
+      end
+      inherited ComboEdit3: TComboEdit
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        Position.Y = 339.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Size.Width = 390.000000000000000000
+      end
+      inherited Button2: TButton
+        Position.Y = 582.000000000000000000
+        Size.Width = 390.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+      inherited JaugeRect1: TJaugeRect
+        Margins.Top = 5.000000000000000000
+        Position.Y = 399.000000000000000000
+        Size.Width = 390.000000000000000000
+      end
+      inherited Label8: TLabel
+        Size.Width = 450.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+      inherited Label9: TLabel
+        Margins.Top = 5.000000000000000000
+        Position.Y = 311.000000000000000000
+        Size.Width = 450.000000000000000000
+      end
+      inherited Label10: TLabel
+        Position.Y = 371.000000000000000000
+        Size.Width = 450.000000000000000000
+      end
+      inherited ProgressBar1: TProgressBar
+        Margins.Top = 10.000000000000000000
+        Position.Y = 486.000000000000000000
+        Size.Width = 390.000000000000000000
+        Value = 60.000000000000000000
+      end
+      inherited Label11: TLabel
+        Position.Y = 449.000000000000000000
+        Size.Width = 450.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+    end
+  end
+end

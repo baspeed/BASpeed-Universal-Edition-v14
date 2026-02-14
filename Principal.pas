@@ -195,7 +195,7 @@ begin
      configuracion.Add(NumberBox1.Value.ToString);        // Añade la velocidad de descarga de la conexión
      configuracion.Add(NumberBox2.Value.ToString);        // Añade la velocidad de subida de la conexión
      configuracion.Add(ComboEdit2.ItemIndex.ToString);    // Añade el operador de la conexión
-     configuracion.SaveToFile(TPath.GetHomePath+TPath.DirectorySeparatorChar+'baspeed.cfg');   // Graba el archivo de configuración en el equipo
+     configuracion.SaveToFile(TPath.GetDocumentsPath+TPath.DirectorySeparatorChar+'baspeed.cfg');   // Graba el archivo de configuración en el equipo
      configuracion.Free;     // Libera la memoria dedicada los datos de la conexión del usuario
      Panel1.Visible:=False;  // El panel 1 (opciones de la conexión) se oculta
      Panel2.Visible:=True;   // El panel 2 (test de descarga) se hace visible
@@ -261,7 +261,7 @@ begin
      JaugeRect1.Mini:=0;         // Valor mínimo del indicador de porcentaje de utilización de velocidad de conexión
      ProgressBar1.Value:=0;      // Barra de progreso del test de velocidad a 0
      // Si existe el fichero de configuración en el fichero Home del usuario
-     if FileExists(TPath.GetHomePath+TPath.DirectorySeparatorChar+'baspeed.cfg',false) then
+     if FileExists(TPath.GetDocumentsPath+TPath.DirectorySeparatorChar+'baspeed.cfg',false) then
         begin
              configuracion:=TStringList.Create; // Crea la lista de cadena de caracteres
              configuracion.LoadFromFile(TPath.GetDocumentsPath+TPath.DirectorySeparatorChar+'baspeed.cfg'); // Carga el fichero de configuración en la lista de cadenas

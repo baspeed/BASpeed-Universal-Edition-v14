@@ -619,6 +619,7 @@ object Form4: TForm4
     Size.Width = 412.000000000000000000
     Size.Height = 560.000000000000000000
     Size.PlatformDefault = False
+    Visible = False
     TabOrder = 3
     object Rectangle2: TRectangle
       Align = Client

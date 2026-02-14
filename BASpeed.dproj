@@ -319,18 +319,18 @@
         <DCC_RangeChecking>true</DCC_RangeChecking>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Android)'!=''">
-        <VerInfo_Build>7</VerInfo_Build>
+        <VerInfo_Build>10</VerInfo_Build>
         <VerInfo_MajorVer>2026</VerInfo_MajorVer>
         <VerInfo_MinorVer>2</VerInfo_MinorVer>
-        <VerInfo_Release>14</VerInfo_Release>
-        <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=;minSdkVersion=23;targetSdkVersion=35;FileVersion=2026.2.14.7;LastCompiledTime=2026/02/14 19:27:39</VerInfo_Keys>
+        <VerInfo_Release>15</VerInfo_Release>
+        <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=;minSdkVersion=23;targetSdkVersion=35;FileVersion=2026.2.15.10;LastCompiledTime=2026/02/15 00:08:52</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Android64)'!=''">
-        <VerInfo_Build>7</VerInfo_Build>
+        <VerInfo_Build>12</VerInfo_Build>
         <VerInfo_MajorVer>2026</VerInfo_MajorVer>
         <VerInfo_MinorVer>2</VerInfo_MinorVer>
-        <VerInfo_Release>14</VerInfo_Release>
-        <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=6;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=;minSdkVersion=23;targetSdkVersion=35;FileVersion=2026.2.14.7;LastCompiledTime=2026/02/14 19:34:35</VerInfo_Keys>
+        <VerInfo_Release>15</VerInfo_Release>
+        <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=6;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=;minSdkVersion=23;targetSdkVersion=35;FileVersion=2026.2.15.12;LastCompiledTime=2026/02/15 00:09:17</VerInfo_Keys>
         <AUP_ACCESS_COARSE_LOCATION>false</AUP_ACCESS_COARSE_LOCATION>
         <AUP_ACCESS_FINE_LOCATION>false</AUP_ACCESS_FINE_LOCATION>
         <AUP_CALL_PHONE>false</AUP_CALL_PHONE>
@@ -379,11 +379,11 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <VerInfo_Build>784</VerInfo_Build>
+        <VerInfo_Build>792</VerInfo_Build>
         <VerInfo_MajorVer>2026</VerInfo_MajorVer>
         <VerInfo_MinorVer>2</VerInfo_MinorVer>
-        <VerInfo_Release>14</VerInfo_Release>
-        <VerInfo_Keys>CompanyName=BASpeed Software;FileDescription=$(MSBuildProjectName);FileVersion=2026.2.14.784;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=14.0.0.0;Comments=;LastCompiledTime=2026/02/14 19:33:04</VerInfo_Keys>
+        <VerInfo_Release>15</VerInfo_Release>
+        <VerInfo_Keys>CompanyName=BASpeed Software;FileDescription=$(MSBuildProjectName);FileVersion=2026.2.15.792;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=14.0.0.0;Comments=;LastCompiledTime=2026/02/15 00:09:32</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -391,11 +391,11 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <VerInfo_Build>797</VerInfo_Build>
+        <VerInfo_Build>815</VerInfo_Build>
         <VerInfo_MajorVer>2026</VerInfo_MajorVer>
         <VerInfo_MinorVer>2</VerInfo_MinorVer>
-        <VerInfo_Release>14</VerInfo_Release>
-        <VerInfo_Keys>CompanyName=BASpeed Software;FileDescription=$(MSBuildProjectName);FileVersion=2026.2.14.797;InternalName=Test de velocidad de BASpeed;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=14.0.0.0;Comments=;LastCompiledTime=2026/02/14 19:32:51</VerInfo_Keys>
+        <VerInfo_Release>15</VerInfo_Release>
+        <VerInfo_Keys>CompanyName=BASpeed Software;FileDescription=$(MSBuildProjectName);FileVersion=2026.2.15.815;InternalName=Test de velocidad de BASpeed;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=14.0.0.0;Comments=;LastCompiledTime=2026/02/15 00:09:39</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>

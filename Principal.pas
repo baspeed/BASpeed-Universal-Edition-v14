@@ -1,9 +1,10 @@
 //
 // ------------------------------------------------------------------
-// - Código fuente de BASpeed Universal Edition v14
-// - Versión actual                  -
+// - Código fuente de BASpeed Universal Edition v14                 -
+// - Versión actual 2026.2.14.797 prebeta                           -
 // - Creado por José Ignacio Legido (djnacho de bandaancha.eu)      -
-// - Fecha del proyecto: 05/02/2026 - 18:57                         -
+// - Fecha del proyecto: 28/12/2025 - 22:07                         -
+// - Fecha versión actual: 14/02/2026 - 19:27                       -
 // -                                                                -
 // - Creado para la comunidad de usuarios de bandaancha.eu y para   -
 // - toda la comunidad de internet en general                       -
@@ -146,14 +147,15 @@ begin
      TamArchivo:=Download.Response.ContentLength;                  // Establece que el tamaño del archivo es el valor devuelto por el servidor en ContentLength
      TInicial:=GetTickCount64;                                     // Establece el tiempo inicial en el que se inicia el test de velocidad (número de milisegundos desde que el sistema se inició por última vez)
      contador:=1;                                                  // Establece el contador de intentos de conexión a 1
-     repeat
-           try
-              Download.Get(Enlace,Memoria);                        // Intenta descarga el archivo
-           except
-                 on Exception do
-                    Inc(contador,1);                               // Si hay cualquier error, incrementa el contador de intentos de descarga
-           end;
-     until (Download.ResponseCode=200) or (contador>3);            // Repite hasta que el servidor devuelva un OK (código de respuesta 200) o que el contador de intentos sea mayor de 3
+     try
+        Download.Get(Enlace,Memoria);                        // Intenta descarga el archivo
+     except
+           on Exception do
+                          begin
+                               ManagerSSL.Close;                              // En caso de fallo cierra la conexión SSL
+                               Download.Disconnect;                           // Y desconecta del servidor HTTP/HTTPS
+                          end;
+     end;
      Memoria.Free;                                                 // Libera la memoria asignada al buffer de memoria del hilo
      ManagerSSL.Free;                                              // Libera la memoria asignada al objeto que maneja las conexiones HTTP y HTTPS
      Download.Free;                                                // Libera la memoria asignada al objeto que permite la conexión a servidores HTTP y HTTPS
@@ -165,11 +167,19 @@ end;
 procedure TDescarga.CalculaDatos(ASender: TObject; AWorkMode: TWorkMode; AWorkCount: Int64);
 
 begin
-     Memoria.Seek(0,soFromBeginning);     // Vuelve a apuntar el puntero del buffer al principio del buffer de memoria
-     TFinal:=GetTickCount64;              // Calcula el tiempo final desde que se inició el test (en milisegundos desde que se inició por última vez el sistema)
-     TTotal:=TFinal - TInicial;           // El tiempo total es la resta del tiempo final y tiempo inicial
-     Velocidad:=(AWorkCount div TTotal)*8;   // La velocidad media es la división del número total de datos descargados entre el tiempo transcurrido y multiplicado por 8 para que el resultado sea en Kilobit/s
-     TPCDescargado:=(AWorkCount*100) div TAMArchivo; // El tanto por ciento descargado del archivo es el número de bytes descargados multiplados por cien y dividido el resultado entre el tamaño total del archivo
+     if (Terminated) then
+        begin
+             ManagerSSL.Close;                     // Si se ha terminado el test cierra la conexión SSL
+             Download.Disconnect;                  // Y desconecta del servidor HTTP/HTTPS
+        end
+     else
+         begin
+              Memoria.Seek(0,soFromBeginning);     // Vuelve a apuntar el puntero del buffer al principio del buffer de memoria
+              TFinal:=GetTickCount64;              // Calcula el tiempo final desde que se inició el test (en milisegundos desde que se inició por última vez el sistema)
+              TTotal:=TFinal - TInicial;           // El tiempo total es la resta del tiempo final y tiempo inicial
+              Velocidad:=(AWorkCount div TTotal)*8;   // La velocidad media es la división del número total de datos descargados entre el tiempo transcurrido y multiplicado por 8 para que el resultado sea en Kilobit/s
+              TPCDescargado:=(AWorkCount*100) div TAMArchivo; // El tanto por ciento descargado del archivo es el número de bytes descargados multiplados por cien y dividido el resultado entre el tamaño total del archivo
+         end;
 end;
 
 // Rutina que se ejecuta al pulsar el botón de aceptar los datos de conexión del usuario.
@@ -211,8 +221,7 @@ begin
                  // Si aún está activo
                  if Assigned(test[contador]) then
                     begin
-                         test[contador].Download.Disconnect; // Desconecta la transferencia entre servidor y cliente (dispositivo del usuario)
-                         test[contador].Terminate;           // Termina la ejecución del hilo
+                         test[contador].Terminate;          // Termina la ejecución del hilo
                     end;
         end
      else

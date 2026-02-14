@@ -619,7 +619,6 @@ object Form4: TForm4
     Size.Width = 412.000000000000000000
     Size.Height = 560.000000000000000000
     Size.PlatformDefault = False
-    Visible = False
     TabOrder = 3
     object Rectangle2: TRectangle
       Align = Client
@@ -728,9 +727,9 @@ object Form4: TForm4
         TextSettings.Font.StyleExt = {00070000000000000004000000}
         OnClick = Button2Click
         object Glyph1: TGlyph
-          Margins.Left = 20.000000000000000000
+          Margins.Left = 10.000000000000000000
           Align = Left
-          Position.X = 20.000000000000000000
+          Position.X = 10.000000000000000000
           Size.Width = 48.000000000000000000
           Size.Height = 50.000000000000000000
           Size.PlatformDefault = False
@@ -819,7 +818,7 @@ object Form4: TForm4
         Position.X = 30.000000000000000000
         Position.Y = 461.000000000000000000
         Size.Width = 352.000000000000000000
-        Size.Height = 8.000000000000000000
+        Size.Height = 10.000000000000000000
         Size.PlatformDefault = False
       end
       object Label11: TLabel

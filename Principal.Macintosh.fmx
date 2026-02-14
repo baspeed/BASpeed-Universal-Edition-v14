@@ -93,6 +93,7 @@ inherited Form4_Macintosh: TForm4_Macintosh
       inherited ProgressBar1: TProgressBar
         Margins.Top = 10.000000000000000000
         Position.Y = 477.000000000000000000
+        Size.Height = 8.000000000000000000
         Value = 60.000000000000000000
       end
       inherited Label11: TLabel

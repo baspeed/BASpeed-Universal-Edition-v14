@@ -87,6 +87,12 @@
         <Cfg_1>true</Cfg_1>
         <Base>true</Base>
     </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Linux64' and '$(Cfg_1)'=='true') or '$(Cfg_1_Linux64)'!=''">
+        <Cfg_1_Linux64>true</Cfg_1_Linux64>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='OSX64' and '$(Cfg_1)'=='true') or '$(Cfg_1_OSX64)'!=''">
         <Cfg_1_OSX64>true</Cfg_1_OSX64>
         <CfgParent>Cfg_1</CfgParent>
@@ -313,18 +319,18 @@
         <DCC_RangeChecking>true</DCC_RangeChecking>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Android)'!=''">
-        <VerInfo_Build>5</VerInfo_Build>
+        <VerInfo_Build>7</VerInfo_Build>
         <VerInfo_MajorVer>2026</VerInfo_MajorVer>
         <VerInfo_MinorVer>2</VerInfo_MinorVer>
-        <VerInfo_Release>6</VerInfo_Release>
-        <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=;minSdkVersion=23;targetSdkVersion=35;FileVersion=2026.2.6.5;LastCompiledTime=2026/02/06 19:04:49</VerInfo_Keys>
+        <VerInfo_Release>14</VerInfo_Release>
+        <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=;minSdkVersion=23;targetSdkVersion=35;FileVersion=2026.2.14.7;LastCompiledTime=2026/02/14 19:27:39</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Android64)'!=''">
-        <VerInfo_Build>36</VerInfo_Build>
+        <VerInfo_Build>7</VerInfo_Build>
         <VerInfo_MajorVer>2026</VerInfo_MajorVer>
         <VerInfo_MinorVer>2</VerInfo_MinorVer>
-        <VerInfo_Release>6</VerInfo_Release>
-        <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=6;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=;minSdkVersion=23;targetSdkVersion=35;FileVersion=2026.2.6.36;LastCompiledTime=2026/02/06 19:05:05</VerInfo_Keys>
+        <VerInfo_Release>14</VerInfo_Release>
+        <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=6;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=;minSdkVersion=23;targetSdkVersion=35;FileVersion=2026.2.14.7;LastCompiledTime=2026/02/14 19:34:35</VerInfo_Keys>
         <AUP_ACCESS_COARSE_LOCATION>false</AUP_ACCESS_COARSE_LOCATION>
         <AUP_ACCESS_FINE_LOCATION>false</AUP_ACCESS_FINE_LOCATION>
         <AUP_CALL_PHONE>false</AUP_CALL_PHONE>
@@ -352,39 +358,48 @@
         <VerInfo_Release>18</VerInfo_Release>
         <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.0.0;CFBundleShortVersionString=1.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;NSLocationAlwaysAndWhenInUseUsageDescription=The reason for accessing the location information of the user;UIBackgroundModes=;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSPhotoLibraryAddUsageDescription=The reason for adding to the photo library;NSCameraUsageDescription=The reason for accessing the camera;NSFaceIDUsageDescription=The reason for accessing the face id;NSMicrophoneUsageDescription=The reason for accessing the microphone;NSSiriUsageDescription=The reason for accessing Siri;ITSAppUsesNonExemptEncryption=false;NSBluetoothAlwaysUsageDescription=The reason for accessing bluetooth;NSBluetoothPeripheralUsageDescription=The reason for accessing bluetooth peripherals;NSCalendarsUsageDescription=The reason for accessing the calendar data;NSRemindersUsageDescription=The reason for accessing the reminders;NSMotionUsageDescription=The reason for accessing the accelerometer;NSSpeechRecognitionUsageDescription=The reason for requesting to send user data to Apple&apos;s speech recognition servers;FileVersion=2025.11.18.1;LastCompiledTime=2025/11/18 18:25:27;FileVersion=2025.11.18.0;LastCompiledTime=2025/11/18 18:25:32;FileVersion=2025.11.18.1;LastCompiledTime=2025/11/18 18:29:43;FileVersion=2025.11.18.0;LastCompiledTime=2025/11/18 18:29:51</VerInfo_Keys>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Linux64)'!=''">
+        <Debugger_Launcher>/usr/bin/gnome-terminal -- &quot;%debuggee%&quot;</Debugger_Launcher>
+        <Icon_MainIcon>D:\IMAGENES\Speedometer.ico</Icon_MainIcon>
+        <Manifest_File>(None)</Manifest_File>
+        <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_OSX64)'!=''">
-        <VerInfo_Build>616</VerInfo_Build>
-        <VerInfo_MajorVer>2025</VerInfo_MajorVer>
-        <VerInfo_MinorVer>12</VerInfo_MinorVer>
-        <VerInfo_Release>31</VerInfo_Release>
-        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleVersion=2025.12.610;CFBundleShortVersionString=14.0.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);NSHighResolutionCapable=true;LSApplicationCategoryType=public.app-category.utilities;NSLocationUsageDescription=The reason for accessing the location information of the user;NSContactsUsageDescription=The reason for accessing the contacts;NSCalendarsUsageDescription=The reason for accessing the calendar data;NSRemindersUsageDescription=The reason for accessing the reminders;NSCameraUsageDescription=The reason for accessing the camera;NSMicrophoneUsageDescription=The reason for accessing the microphone;NSMotionUsageDescription=The reason for accessing the accelerometer;NSDesktopFolderUsageDescription=The reason for accessing the Desktop folder;NSDocumentsFolderUsageDescription=The reason for accessing the Documents folder;NSDownloadsFolderUsageDescription=The reason for accessing the Downloads folder;NSNetworkVolumesUsageDescription=The reason for accessing files on a network volume;NSRemovableVolumesUsageDescription=The reason for accessing files on a removable volume;NSSpeechRecognitionUsageDescription=The reason for requesting to send user data to Apple&apos;s speech recognition servers;ITSAppUsesNonExemptEncryption=false;NSBluetoothAlwaysUsageDescription=The reason for accessing the Bluetooth interface;FileVersion=2025.11.18.1;LastCompiledTime=2025/11/18 18:19:18;FileVersion=2025.11.18.2;LastCompiledTime=2025/11/18 18:25:37;FileVersion=2025.11.18.3;LastCompiledTime=2025/11/18 18:30:51;FileVersion=2025.12.27.4;LastCompiledTime=2025/12/27 21:51:37;FileVersion=2025.12.27.5;LastCompiledTime=2025/12/27 22:31:33;FileVersion=2025.12.28.6;LastCompiledTime=2025/12/28 16:52:10;FileVersion=2025.12.28.7;LastCompiledTime=2025/12/28 16:53:00;FileVersion=2025.12.28.8;LastCompiledTime=2025/12/28 20:19:27;FileVersion=2025.12.28.9;LastCompiledTime=2025/12/28 20:20:06;FileVersion=2025.12.28.10;LastCompiledTime=2025/12/28 22:02:04;FileVersion=2025.12.28.611;LastCompiledTime=2025/12/28 22:09:39;FileVersion=2025.12.28.612;LastCompiledTime=2025/12/28 22:10:13;FileVersion=2025.12.31.613;LastCompiledTime=2025/12/31 22:47:04;FileVersion=2025.12.31.614;LastCompiledTime=2025/12/31 23:06:41;FileVersion=2025.12.31.615;LastCompiledTime=2025/12/31 23:14:37;FileVersion=2025.12.31.616;LastCompiledTime=2025/12/31 23:18:42</VerInfo_Keys>
+        <VerInfo_Build>611</VerInfo_Build>
+        <VerInfo_MajorVer>2026</VerInfo_MajorVer>
+        <VerInfo_MinorVer>2</VerInfo_MinorVer>
+        <VerInfo_Release>14</VerInfo_Release>
+        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleVersion=2025.12.610;CFBundleShortVersionString=14.0.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);NSHighResolutionCapable=true;LSApplicationCategoryType=public.app-category.utilities;NSLocationUsageDescription=The reason for accessing the location information of the user;NSContactsUsageDescription=The reason for accessing the contacts;NSCalendarsUsageDescription=The reason for accessing the calendar data;NSRemindersUsageDescription=The reason for accessing the reminders;NSCameraUsageDescription=The reason for accessing the camera;NSMicrophoneUsageDescription=The reason for accessing the microphone;NSMotionUsageDescription=The reason for accessing the accelerometer;NSDesktopFolderUsageDescription=The reason for accessing the Desktop folder;NSDocumentsFolderUsageDescription=The reason for accessing the Documents folder;NSDownloadsFolderUsageDescription=The reason for accessing the Downloads folder;NSNetworkVolumesUsageDescription=The reason for accessing files on a network volume;NSRemovableVolumesUsageDescription=The reason for accessing files on a removable volume;NSSpeechRecognitionUsageDescription=The reason for requesting to send user data to Apple&apos;s speech recognition servers;ITSAppUsesNonExemptEncryption=false;NSBluetoothAlwaysUsageDescription=The reason for accessing the Bluetooth interface;FileVersion=2025.11.18.1;LastCompiledTime=2025/11/18 18:19:18;FileVersion=2025.11.18.2;LastCompiledTime=2025/11/18 18:25:37;FileVersion=2025.11.18.3;LastCompiledTime=2025/11/18 18:30:51;FileVersion=2025.12.27.4;LastCompiledTime=2025/12/27 21:51:37;FileVersion=2025.12.27.5;LastCompiledTime=2025/12/27 22:31:33;FileVersion=2025.12.28.6;LastCompiledTime=2025/12/28 16:52:10;FileVersion=2025.12.28.7;LastCompiledTime=2025/12/28 16:53:00;FileVersion=2025.12.28.8;LastCompiledTime=2025/12/28 20:19:27;FileVersion=2025.12.28.9;LastCompiledTime=2025/12/28 20:20:06;FileVersion=2025.12.28.10;LastCompiledTime=2025/12/28 22:02:04;FileVersion=2025.12.28.611;LastCompiledTime=2025/12/28 22:09:39;FileVersion=2025.12.28.612;LastCompiledTime=2025/12/28 22:10:13;FileVersion=2025.12.31.613;LastCompiledTime=2025/12/31 22:47:04;FileVersion=2025.12.31.614;LastCompiledTime=2025/12/31 23:06:41;FileVersion=2025.12.31.615;LastCompiledTime=2025/12/31 23:14:37;FileVersion=2025.12.31.616;LastCompiledTime=2025/12/31 23:18:42;FileVersion=2026.2.14.617;LastCompiledTime=2026/02/14 19:10:41;FileVersion=2026.2.14.611;LastCompiledTime=2026/02/14 19:33:15</VerInfo_Keys>
         <Debugger_Launcher>/usr/X11/bin/xterm -e &quot;%debuggee%&quot;</Debugger_Launcher>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <Manifest_File>(None)</Manifest_File>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
+        <Icon_MainIcon>D:\IMAGENES\Speedometer.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <VerInfo_Build>780</VerInfo_Build>
+        <VerInfo_Build>784</VerInfo_Build>
         <VerInfo_MajorVer>2026</VerInfo_MajorVer>
         <VerInfo_MinorVer>2</VerInfo_MinorVer>
-        <VerInfo_Release>6</VerInfo_Release>
-        <VerInfo_Keys>CompanyName=BASpeed Software;FileDescription=$(MSBuildProjectName);FileVersion=2026.2.6.780;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=14.0.0.0;Comments=;LastCompiledTime=2026/02/06 19:01:21</VerInfo_Keys>
+        <VerInfo_Release>14</VerInfo_Release>
+        <VerInfo_Keys>CompanyName=BASpeed Software;FileDescription=$(MSBuildProjectName);FileVersion=2026.2.14.784;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=14.0.0.0;Comments=;LastCompiledTime=2026/02/14 19:33:04</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <Icon_MainIcon>D:\IMAGENES\Speedometer.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <VerInfo_Build>780</VerInfo_Build>
+        <VerInfo_Build>797</VerInfo_Build>
         <VerInfo_MajorVer>2026</VerInfo_MajorVer>
         <VerInfo_MinorVer>2</VerInfo_MinorVer>
-        <VerInfo_Release>6</VerInfo_Release>
-        <VerInfo_Keys>CompanyName=BASpeed Software;FileDescription=$(MSBuildProjectName);FileVersion=2026.2.6.780;InternalName=Test de velocidad de BASpeed;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=14.0.0.0;Comments=;LastCompiledTime=2026/02/06 19:01:14</VerInfo_Keys>
+        <VerInfo_Release>14</VerInfo_Release>
+        <VerInfo_Keys>CompanyName=BASpeed Software;FileDescription=$(MSBuildProjectName);FileVersion=2026.2.14.797;InternalName=Test de velocidad de BASpeed;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=14.0.0.0;Comments=;LastCompiledTime=2026/02/14 19:32:51</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
+        <Icon_MainIcon>D:\IMAGENES\Speedometer.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>

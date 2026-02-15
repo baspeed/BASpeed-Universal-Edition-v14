@@ -3,8 +3,12 @@
 // - Código fuente de BASpeed Universal Edition v14                 -
 // - Versión actual 2026.2.14.797 prebeta                           -
 // - Creado por José Ignacio Legido (djnacho de bandaancha.eu)      -
+// -                                                                -
+// - Colaboradores:                                                 -
+// - Usuario MaXiMu de bandaancha.eu                                -
+// -                                                                -
 // - Fecha del proyecto: 28/12/2025 - 22:07                         -
-// - Fecha versión actual: 14/02/2026 - 19:27                       -
+// - Fecha versión actual: 15/02/2026 - 16:32                      -
 // -                                                                -
 // - Creado para la comunidad de usuarios de bandaancha.eu y para   -
 // - toda la comunidad de internet en general                       -
@@ -96,6 +100,8 @@ type
               procedure Execute;override;
   end;
 
+function GetConfigPath: string; // Rutina creada por MaXiMu para situar el archivo de configuración de BASpeed en cada sistema operativo
+
 const
      TAMBUFFER : Int64= 384*1024;        // Tamaño del buffer de memoria que guarda los datos transmitidos desde el servidor del test de velocidad
      NUMHILOS  : Integer= 6;             // Número de hilos simultáneos que se ejecutan en un test de velocidad
@@ -112,6 +118,46 @@ implementation
 {$R *.Macintosh.fmx MACOS}
 {$R *.LgXhdpiPh.fmx ANDROID}
 {$R *.Windows.fmx MSWINDOWS}
+
+// Rutina creada por MaXiMu para situar la ruta de acceso al archivo de configuración de BASpeed en todos los sistemas operativos
+// Creada por MaXiMu 15-02-2026, comentada por djnacho 15-02-2026
+
+function GetConfigPath: string;
+var
+  BasePath: string;
+
+begin
+  // SE calcula la ruta de acceso si la aplicación es compilada para Windows
+  {$IFDEF MSWINDOWS}
+    BasePath := TPath.GetHomePath; // normalmente apunta a AppData\Roaming
+    BasePath := TPath.Combine(BasePath, 'AppData\Local');
+  {$ENDIF}
+
+  // Se calcula la ruta de accesso si la aplicación es compilada para Linux
+  {$IFDEF LINUX}
+    BasePath := GetEnvironmentVariable('XDG_CONFIG_HOME');
+    if BasePath = '' then
+      BasePath := TPath.Combine(TPath.GetHomePath, '.config');
+  {$ENDIF}
+
+  // Se calcula la ruta de accesso si la aplicación es compilada para Android
+  {$IFDEF ANDROID}
+    BasePath := TPath.GetDocumentsPath;
+  {$ENDIF}
+
+  // Se calcula la ruta de acceso si la aplicación es compilada para Mac OS X
+  {$IFDEF MACOS}
+    BasePath := TPath.Combine(TPath.GetHomePath, 'Library/Application Support');
+  {$ENDIF}
+
+  // Al resultado del cálculo de la ruta de acceso, se le añade la carpeta baspeed al final
+  Result := TPath.Combine(BasePath, 'baspeed');
+
+  //Si la carpeta donde se va a crear el archivo de configuración no existe
+  if not DirectoryExists(Result) then
+    ForceDirectories(Result);    // Crea la carpeta en la ruta indicad
+  Result := TPath.Combine(Result, 'baspeed.cfg');   // Devuelve la ruta final completa al archivo de configuración
+end;
 
 // Rutina de ejecución de cada hilo del test de descarga del test de velocidad
 
@@ -188,6 +234,7 @@ procedure TForm4.Button1Click(Sender: TObject);
 
 var
    configuracion: TStringList;        // Los datos de la conexión se guarda en una lista de cadenas de caracteres
+   ruta: string;
 
 begin
      configuracion:=TStringList.Create;  // Crea la lista de cadenas de caracteres
@@ -195,7 +242,8 @@ begin
      configuracion.Add(NumberBox1.Value.ToString);        // Añade la velocidad de descarga de la conexión
      configuracion.Add(NumberBox2.Value.ToString);        // Añade la velocidad de subida de la conexión
      configuracion.Add(ComboEdit2.ItemIndex.ToString);    // Añade el operador de la conexión
-     configuracion.SaveToFile(TPath.GetDocumentsPath+TPath.DirectorySeparatorChar+'baspeed.cfg');   // Graba el archivo de configuración en el equipo
+     ruta:=GetConfigPath;                                 // Ruta al archivo de configuración de BASpeed
+     configuracion.SaveToFile(ruta);   // Graba el archivo de configuración en el equipo
      configuracion.Free;     // Libera la memoria dedicada los datos de la conexión del usuario
      Panel1.Visible:=False;  // El panel 1 (opciones de la conexión) se oculta
      Panel2.Visible:=True;   // El panel 2 (test de descarga) se hace visible
@@ -247,8 +295,10 @@ procedure TForm4.FormCreate(Sender: TObject);
 
 var
    configuracion: TStringList; // Lista de cadena de caracteres que guarda el fichero de configuración de BASpeed
+   ruta: string;
 
 begin
+      ruta:=GetConfigPath;        // Ruta al archivo de configuración de BASpeed
      // Si se está compilando la aplicación para Android
      {$IFDEF ANDROID}
      // Situa la ruta a las librerias OpenSSL en el directorio /data/data/<application ID>/files (Donde se guardan los documentos internos de la aplicación)
@@ -260,11 +310,10 @@ begin
      JaugeRect1.Maxi:=100;       // Valor máximo del indicador de porcentaje de utilización de velocidad de conexión
      JaugeRect1.Mini:=0;         // Valor mínimo del indicador de porcentaje de utilización de velocidad de conexión
      ProgressBar1.Value:=0;      // Barra de progreso del test de velocidad a 0
-     // Si existe el fichero de configuración en el fichero Home del usuario
-     if FileExists(TPath.GetDocumentsPath+TPath.DirectorySeparatorChar+'baspeed.cfg',false) then
+     if FileExists(ruta,false) then
         begin
              configuracion:=TStringList.Create; // Crea la lista de cadena de caracteres
-             configuracion.LoadFromFile(TPath.GetDocumentsPath+TPath.DirectorySeparatorChar+'baspeed.cfg'); // Carga el fichero de configuración en la lista de cadenas
+             configuracion.LoadFromFile(ruta); // Carga el fichero de configuración en la lista de cadenas
              ComboEdit1.ItemIndex:=configuracion[0].ToInteger; // Carga el valor del tipo de conexión
              NumberBox1.Value:=configuracion[1].ToInteger;     // Carga la velocidad de descarga
              NumberBox2.Value:=configuracion[2].ToInteger;     // Carga la velocidad de subida

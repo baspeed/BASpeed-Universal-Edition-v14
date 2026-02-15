@@ -5,10 +5,10 @@
 // - Creado por José Ignacio Legido (djnacho de bandaancha.eu)      -
 // -                                                                -
 // - Colaboradores:                                                 -
-// - Usuario MaXiMu de bandaancha.eu                                -
+// - Usuario MaXiMu de bandaancha.eu (Carlos Estrague)              -
 // -                                                                -
 // - Fecha del proyecto: 28/12/2025 - 22:07                         -
-// - Fecha versión actual: 15/02/2026 - 16:32                      -
+// - Fecha versión actual: 15/02/2026 - 16:32                       -
 // -                                                                -
 // - Creado para la comunidad de usuarios de bandaancha.eu y para   -
 // - toda la comunidad de internet en general                       -

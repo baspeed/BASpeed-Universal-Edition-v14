@@ -1,1 +1,3 @@
-
+# Cambios realizados en la versión 2026.2.22.893
+- Se ha modificado la rutina contenida en el procedure Timer1.Timer que es llamado cada vez que se va a actulizar la información del test de velocidad en pantalla. En las versiones anteriores se sumaban las velocidades de todos los hilos, hubiesen acabado su ejecución o no. Esto generaba un fallo, ya que cuando un hilo termina su ejecución su velocidad es 0, no la última velocidad registrada, por lo que al ir acabando la ejecución los hilos, la velocidad final mostrada era mayor que la velocidad real que estaban midiendo los hilos.   
+A partir de esta versión se modifica la parte donde se suman las velocidades de los hilos. En vez de sumar todos las velocidades, solo se suman las velocidades de los hilos que aún no han terminado. De esta forma muestra la velocidad real del test. Al final se muestra la velocidad máxima conseguida, así como la velocidad media del test de velocidad.

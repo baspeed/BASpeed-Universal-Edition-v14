@@ -7,7 +7,7 @@
     <Transaction>2025/11/16 17:37:05.000.491,D:\Programacion\BAuE_v14\BASpeed.dproj=C:\Users\nacho\Documents\Embarcadero\Studio\Projects\Project4.dproj</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<NoProfile Android64="a505b1fc" Android=""/>
+		<NoProfile Android64="" Android=""/>
 	</ActiveMobileDevice>
 	<BT_BuildType>Debug</BT_BuildType>
 </BorlandProject>

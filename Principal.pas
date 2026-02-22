@@ -1,14 +1,14 @@
 //
 // ------------------------------------------------------------------
 // - Código fuente de BASpeed Universal Edition v14                 -
-// - Versión actual 2026.2.14.797 prebeta                           -
+// - Versión actual 2026.2.20.870 prebeta                           -
 // - Creado por José Ignacio Legido (djnacho de bandaancha.eu)      -
 // -                                                                -
 // - Colaboradores:                                                 -
 // - Usuario MaXiMu de bandaancha.eu (Carlos Estrague)              -
 // -                                                                -
 // - Fecha del proyecto: 28/12/2025 - 22:07                         -
-// - Fecha versión actual: 15/02/2026 - 16:32                       -
+// - Fecha versión actual: 22/02/2026 - 18:18                       -
 // -                                                                -
 // - Creado para la comunidad de usuarios de bandaancha.eu y para   -
 // - toda la comunidad de internet en general                       -
@@ -25,13 +25,13 @@ interface
 // librerías de Delphi que usa internamente la aplicación para poder funcionar
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
-  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Objects, FMX.ListBox, FMX.Edit,
+  System.SysUtils, System.UITypes, System.Classes,
+  FMX.Types, FMX.Forms,
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Objects, FMX.Edit,
   FMX.ComboEdit, FMX.EditBox, FMX.NumberBox, JaugeCir, System.IOUtils,
-  Affichage7Seg, JaugeRect, GraphicDefilant, IdHTTP, IdIOHandler,
-  IdIOHandlerStack, IdSSLOpenSSL, IdComponent, IdSSLOpenSSLHeaders,
-  FMX.DialogService.Async, FMX.ImgList, System.ImageList;
+  Affichage7Seg, JaugeRect, IdSSLOpenSSLHeaders, IdHTTP, IdIOHandler,
+  IdIOHandlerStack, IdSSLOpenSSL, IdComponent,
+  FMX.DialogService.Async, FMX.ImgList, System.ImageList, FMX.Controls;
 
 // Ventana principal de la aplicación
 
@@ -103,7 +103,7 @@ type
 function GetConfigPath: string; // Rutina creada por MaXiMu para situar el archivo de configuración de BASpeed en cada sistema operativo
 
 const
-     TAMBUFFER : Int64= 384*1024;        // Tamaño del buffer de memoria que guarda los datos transmitidos desde el servidor del test de velocidad
+     TAMBUFFER : Int64= 512*1024;        // Tamaño del buffer de memoria que guarda los datos transmitidos desde el servidor del test de velocidad
      NUMHILOS  : Integer= 6;             // Número de hilos simultáneos que se ejecutan en un test de velocidad
 
 var
@@ -111,6 +111,10 @@ var
   Test: array[1..6] of TDescarga;        // Array (matriz) de hilos de ejecución del test de descarga
   MaxTPC: Integer;                       // Máximo tanto por ciento de utilización de la velocidad de la conexión
   conexionmax: Double;                   // Variable que permite determinar el tanto por ciento máximo de utilización de la velocidad de conexión
+  VMax: UInt64;                          // Variable que va guardando la velocidad máxima del test de velocidad
+  VMedia: UInt64;                        // Variable que guarda la suma de todas las velocidades medias del test
+  contadortests: UInt32;                 // Contador que guarda el número de veces que se muestra la velocidad media del test
+
 
 implementation
 
@@ -280,6 +284,9 @@ begin
               Button2.Text:='Cancelar test de velocidad';     // Se cambia el mensaje del botón a Cancelar test de velocidad
               MaxTPC:=Trunc(NumberBox1.Value);                // El máximo valor para calcular el porcentaje de utilización de conexión es el valor de la velocidad de descarga de la conexión
               Timer1.Enabled:=True;                           // Se activa el temporizador para empezar a mostrar los datos
+              VMax:=0;                                        // La velocidad máxima del test se pone a 0
+              VMedia:=0;                                      // La velocidad media del test se pone a 0
+              contadortests:=0;                               // El contador de veces que se muestra la velocidad media se pone a 0
               // Activa todos los hilos de ejecución
               for contador := 1 to NUMHILOS do
                   begin
@@ -337,9 +344,19 @@ begin
      vtotal:=0;                      // Se asigna la velocidad total a 0
      contador:=1;                    // Contador de hilos de ejecución a 1
      repeat
-           vtotal:=vtotal+test[contador].Velocidad; // Se suma la velocidad de cada hilo de ejecución
+           // Se suma la velocidad de cada hilo de ejecución (VTotal=Velocidad media del test cada 250 milisegundos)
+           // Sólo se realiza la suma de velocidades si el hilo de ejecución aún no ha terminado. Si ha terminado, no se realiza la suma de la velocidad ya que
+           // el resultado saldría falseado cuando fueran acabando los hilos
+           if (test[contador].Terminated=False) then
+              vtotal:=vtotal+test[contador].Velocidad;
+           if (vtotal>VMax) then                    // Si la velocidad media del test en este momento supera la velocidad máxima medida en este test
+              VMax:=vtotal;                         // Se asigna la velocidd máxima del test a la variable VMax
            Inc(contador,1);                         // Incrementa el número de hilo de ejecución en una unidad
      until (contador>NUMHILOS);                     // Repetir hasta que se llegue al número máximo de hilos
+     if (vtotal>VMax) then                          // Si la velocidad media del test en este momento supera la velocidad máxima medida en este test
+              VMax:=vtotal;                         // Se asigna la velocidd máxima del test a la variable VMax
+     VMedia:=VMedia+vtotal;                         // Se calcula la suma de todas las velocidades medias del test de velocidad
+     Inc(contadortests,1);                          // Incrementa el número de visualizaciones de la velocidad media del test de velocidad
      Affichage7Seg1.Valeur:=Format('%.8d',[vtotal]);   // Se asigna el valor de vtotal al indicador digital de velocidad con un formato de 8 dígitos
      JaugeCir1.Valeur:=vtotal/1000;                    // Se asigna el valor de vtotal/1000 (para mostrar la velocidad en megabit/s) al indicador analógico de velocidad
      tpcconexion:=((vtotal/1000)*100)/MaxTPC;          // Se calcula el tanto por ciento de utilización de la conexión
@@ -348,7 +365,7 @@ begin
      // Se calcula el progreso del test de velocidad
      ProgressBar1.Value:=(test[1].TPCDescargado+test[2].TPCDescargado+test[3].TPCDescargado+test[4].TPCDescargado+test[5].TPCDescargado+test[6].TPCDescargado)/6;
      Label11.Text:='Progreso '+Round(ProgressBar1.Value).ToString+'%'; // Se muestra el progreso con un valor númerico porcentual dentro de la barra de progreso
-     JaugeRect1.Valeur:=conexionmax; // Se muestra el valor del tanto por ciento de utilización de la conexión
+     JaugeRect1.Valeur:=tpcconexion; // Se muestra el valor del tanto por ciento de utilización de la conexión
      // Si todos los hilos de ejecución han terminado su tarea
      if (Test[1].Terminated=True) and (Test[2].Terminated=True) and (Test[3].Terminated=True) and (Test[4].Terminated=True) or
         (Test[5].Terminated=True) and (Test[6].Terminated=True) then
@@ -367,7 +384,8 @@ begin
              // Muestra en pantalla un informe con los datos del test de velocidad, haya este finalizado, o haya sido cancelado por el usuario
              TDialogServiceAsync.MessageDialog('Test finalizado'#10+
                                           'Test utilizado: '+ComboEdit3.Text+#10+
-                                          'Velocidad máxima: '+vtotal.ToString+' Kbit/s ('+(vtotal div 1000).ToString+' Mbit/s)'#10+
+                                          'Velocidad máxima: '+VMax.ToString+' Kbit/s ('+(VMax div 1000).ToString+' Mbit/s)'#10+
+                                          'Velocidad media del test: '+Trunc(VMedia/contadortests).ToString+' Kbit/s ('+(Trunc(VMedia/contadortests) div 1000).ToString+ 'Mbit/s)'#10+
                                           'Porcentaje máximo utilizado de la conexión: '+Trunc(conexionmax).ToString+'%',TMsgDlgType.mtInformation,
                                           [TMsgDlgBtn.mbOK],TMsgDlgBtn.mbOK,0);
         end;

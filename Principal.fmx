@@ -838,7 +838,7 @@ object Form4: TForm4
   end
   object Timer1: TTimer
     Enabled = False
-    Interval = 250
+    Interval = 125
     OnTimer = Timer1Timer
     Left = 352
     Top = 56

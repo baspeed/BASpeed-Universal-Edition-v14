@@ -1,4 +1,4 @@
-# BASpeed-Universal-Edition-v14
+# BASpeed Universal Edition v14
 Repositorio del código fuente de BASpeed v14 Universal Edition
 Creado por el usuario [djnacho - José Ignacio Legido](https://bandaancha.eu/usuarios/djnacho-60320) de [bandaancha.eu](https://bandaancha.eu)<br>
 Última versión: v2026.2.15.841 (15-02-2026)

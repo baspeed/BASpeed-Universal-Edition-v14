@@ -130,14 +130,16 @@ implementation
 function GetAppVersion: string;
 
 var
-  AppService: IInterface; //IFMXApplicationService;
+  AppService: IInterface; // Interface que se conecta con IFMXApplicationService para obtener información de la aplicación
+
 begin
-  //Get the service interface you need
+  // La variable AppService se conecta con el interface de la aplicación
   AppService := TPlatformServices.Current.GetPlatformService(IFMXApplicationService);
+  // Si logra conectarse el interface
   if Assigned(AppService) then
-     Result:=(AppService as IFMXApplicationService).AppVersion
+     Result:=(AppService as IFMXApplicationService).AppVersion // Obtiene el número de versión de la aplicación
   else
-      Result:='';
+      Result:=''; // Si no, devuelve cadena vacia
 end;
 
 // Rutina creada por MaXiMu para situar la ruta de acceso al archivo de configuración de BASpeed en todos los sistemas operativos

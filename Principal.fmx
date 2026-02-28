@@ -3,7 +3,7 @@ object Form4: TForm4
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = Single
-  Caption = 'BASpeed Universal Edition v14 - Pre-beta'
+  Caption = 'BASpeed Universal Edition v14'
   ClientHeight = 608
   ClientWidth = 412
   Fill.Kind = Solid
@@ -196,13 +196,13 @@ object Form4: TForm4
         StyledSettings = [Family, FontColor]
         Margins.Left = 60.000000000000000000
         Position.X = 60.000000000000000000
-        Size.Width = 325.000000000000000000
+        Size.Width = 223.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Font.Size = 14.000000000000000000
         TextSettings.Font.StyleExt = {00070000000000000004000000}
         TextSettings.WordWrap = False
-        Text = 'BASpeed Universal Edition v14 - Versi'#243'n Pre-beta'
+        Text = 'BASpeed Universal Edition v14 - v'
         TabOrder = 0
       end
     end

@@ -31,7 +31,8 @@ uses
   FMX.ComboEdit, FMX.EditBox, FMX.NumberBox, JaugeCir, System.IOUtils,
   Affichage7Seg, JaugeRect, IdSSLOpenSSLHeaders, IdHTTP, IdIOHandler,
   IdIOHandlerStack, IdSSLOpenSSL, IdComponent,
-  FMX.DialogService.Async, FMX.ImgList, System.ImageList, FMX.Controls;
+  FMX.DialogService.Async, FMX.ImgList, System.ImageList, FMX.Controls,
+  FMX.Platform;
 
 // Ventana principal de la aplicación
 
@@ -101,6 +102,7 @@ type
   end;
 
 function GetConfigPath: string; // Rutina creada por MaXiMu para situar el archivo de configuración de BASpeed en cada sistema operativo
+function GetAppVersion: string; // Rutina creada para obtener el número de versión del programa en cada sistema operativo
 
 const
      TAMBUFFER : Int64= 512*1024;        // Tamaño del buffer de memoria que guarda los datos transmitidos desde el servidor del test de velocidad
@@ -122,6 +124,21 @@ implementation
 {$R *.Macintosh.fmx MACOS}
 {$R *.LgXhdpiPh.fmx ANDROID}
 {$R *.Windows.fmx MSWINDOWS}
+
+// Rutina creada para obtener el número de versión del programa en cada sistema operativo
+
+function GetAppVersion: string;
+
+var
+  AppService: IInterface; //IFMXApplicationService;
+begin
+  //Get the service interface you need
+  AppService := TPlatformServices.Current.GetPlatformService(IFMXApplicationService);
+  if Assigned(AppService) then
+     Result:=(AppService as IFMXApplicationService).AppVersion
+  else
+      Result:='';
+end;
 
 // Rutina creada por MaXiMu para situar la ruta de acceso al archivo de configuración de BASpeed en todos los sistemas operativos
 // Creada por MaXiMu 15-02-2026, comentada por djnacho 15-02-2026
@@ -303,9 +320,23 @@ procedure TForm4.FormCreate(Sender: TObject);
 var
    configuracion: TStringList; // Lista de cadena de caracteres que guarda el fichero de configuración de BASpeed
    ruta: string;
+   version: string;
 
 begin
       ruta:=GetConfigPath;        // Ruta al archivo de configuración de BASpeed
+      {$IFDEF LINUX}
+      version:='14.0.925';      // Obtiene la version interna del programa del ejecutable (En Linux hay que especificar literalmente el número de versión, el numero de revisión y la build)
+      {$ENDIF}
+      {$IFDEF MSWINDOWS}
+      version:=GetAppVersion+'.925'; // Obtiene la version interna del programa del ejecutable (En Windows la build hay que especificarla literalmente)
+      {$ENDIF}
+      {$IFDEF MACOS}
+      version:=GetAppVersion;     // Obtiene la version interna del programa del ejecutable (Mac OS X)
+      {$ENDIF}
+      {$IFDEF ANDROID}
+      version:=GetAppVersion;     // Obtiene la version interna del programa del ejecutable (Mac OS X)
+      {$ENDIF}
+      Label1.Text:=Label1.Text+version;
      // Si se está compilando la aplicación para Android
      {$IFDEF ANDROID}
      // Situa la ruta a las librerias OpenSSL en el directorio /data/data/<application ID>/files (Donde se guardan los documentos internos de la aplicación)

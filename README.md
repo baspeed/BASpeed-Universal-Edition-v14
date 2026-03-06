@@ -5,5 +5,8 @@ Creado por el usuario [djnacho - José Ignacio Legido](https://bandaancha.eu/usu
 
 Colaboradores:<br>
 Usuario [MaXiMu - Carlos Estrague](https://bandaancha.eu/usuarios/maximu-47347) - [GitHub de MaXiMu](https://github.com/mrcmunir)<br>
+## Código libre usado de otros usuarios
+[Visulabo](https://github.com/Remi1945/visulabo) Set de componentes de visualización de datos para delphi FMX
+
 
 <img width="414" height="640" alt="BASpeed v14 14-02-2026" src="https://github.com/user-attachments/assets/575909d5-0e30-49b5-8c23-a8d5431edd11" />
